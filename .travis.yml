@@ -1,4 +1,5 @@
 language: java
+install: /bin/true
 jdk:
   - openjdk8
   - openjdk11
