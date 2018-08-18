@@ -40,11 +40,10 @@ public class GeoIPResidentImpl implements GeoIP {
         }
 
         private static void loadIpvCsv(Map<IpAddressMatcher, String> cidrNotationsToCountryIsoCodeMap, Map<String, String> countryIdToCountryIsoCodeMap, String filename) {
-            try (InputStream is = GeoIPResidentImpl.class.getClassLoader().getResourceAsStream(filename)) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            try (InputStream inputStream = MapHolder.class.getClassLoader().getResourceAsStream(filename)) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 Map<IpAddressMatcher, String> ipMap = reader
                         .lines()
-                        .parallel()
                         .skip(1)
                         .map(e -> e.split(","))
                         .filter(e -> !e[IPV_CSV_REGISTERED_COUNTRY_GEONAME_ID].isEmpty() || !e[IPV_CSV_GEONAME_ID].isEmpty())
@@ -56,11 +55,10 @@ public class GeoIPResidentImpl implements GeoIP {
         }
 
         private static Map<String, String> getCountryIdToCountryIsoCodeMap() {
-            try (InputStream is = GeoIPResidentImpl.class.getClassLoader().getResourceAsStream("GeoLite2-Country-Locations-en.csv")) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            try (InputStream inputStream = MapHolder.class.getClassLoader().getResourceAsStream("GeoLite2-Country-Locations-en.csv")) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 return reader
                         .lines()
-                        .parallel()
                         .skip(1)
                         .map(e -> e.split(","))
                         .collect(Collectors.toMap(e -> e[LOCATIONS_CSV_GEO_ID], e -> e[LOCATIONS_CSV_COUNTRY_CODE_ISO]));
@@ -84,10 +82,10 @@ public class GeoIPResidentImpl implements GeoIP {
             }
             return countryIsoCode;
         }
-    }
 
-    private static Map<IpAddressMatcher, String> getCidrNotationsToCountryIsoCodeMap() {
-        return MapHolder.CIDR_NOTATIONS_TO_COUNTRY_IDO_CODE_MAP;
+        private static Map<IpAddressMatcher, String> getCidrNotationsToCountryIsoCodeMap() {
+            return MapHolder.CIDR_NOTATIONS_TO_COUNTRY_IDO_CODE_MAP;
+        }
     }
 
     @Override
@@ -97,7 +95,7 @@ public class GeoIPResidentImpl implements GeoIP {
 
     @Override
     public Optional<String> getCountryIsoCode(String ipAddress) {
-        return getCidrNotationsToCountryIsoCodeMap()
+        return MapHolder.getCidrNotationsToCountryIsoCodeMap()
                 .entrySet()
                 .parallelStream()
                 .filter(e -> e.getKey().matches(ipAddress))
