@@ -5,7 +5,7 @@
 
     <groupId>com.github.tornaia</groupId>
     <artifactId>java-offline-geoip</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>${semver}</version>
     <packaging>jar</packaging>
     <name>Java Offline GeoIP</name>
     <description>Java Offline GeoIP maps any IP address to its country code</description>
@@ -55,6 +55,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <semver>0.1-SNAPSHOT</semver>
+
         <java.version>1.8</java.version>
 
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
@@ -68,6 +70,7 @@
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+        <maven-scm-plugin.version>1.10.0</maven-scm-plugin.version>
 
         <junit.version>4.12</junit.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
@@ -268,6 +271,15 @@
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>${maven-scm-plugin.version}</version>
+                <configuration>
+                    <tag>${project.artifactId}-${project.version}</tag>
                 </configuration>
             </plugin>
         </plugins>
