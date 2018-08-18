@@ -3,7 +3,7 @@
 ##### Prerequisites for development
 
 * Java SE Development Kit 8 or later (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* Maven 3.5.4 (https://maven.apache.org/download.cgi)
+* Maven 3.2.1 or later (https://maven.apache.org/download.cgi)
 
 ##### Build
 
