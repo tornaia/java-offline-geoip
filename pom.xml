@@ -8,6 +8,7 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Java Offline GeoIP</name>
+    <description>Java Offline GeoIP maps any IP address to its country code</description>
 
     <distributionManagement>
         <snapshotRepository>
@@ -19,6 +20,35 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <issueManagement>
+        <url>https://github.com/tornaia/java-offline-geoip/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/tornaia/java-offline-geoip</url>
+        <connection>scm:git:git://github.com/tornaia/java-offline-geoip.git</connection>
+        <developerConnection>scm:git:git@github.com:tornaia/java-offline-geoip.git</developerConnection>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://opensource.org/licenses/Apache-2.0</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>tornaia</id>
+            <name>Andras Tornai</name>
+            <email>tornai.andras.ede@gmail.com</email>
+            <url>https://tornaiandras.com/</url>
+        </developer>
+    </developers>
 
     <properties>
         <file.encoding>UTF-8</file.encoding>
@@ -48,6 +78,36 @@
     </properties>
 
     <build>
+        <resources>
+            <!--  This is the default setting from the super-pom  -->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <!--  ensure the LICENSE.txt appears in jars  -->
+            <resource>
+                <directory>${project.basedir}</directory>
+                <targetPath>META-INF</targetPath>
+                <includes>
+                    <include>LICENSE.txt</include>
+                </includes>
+            </resource>
+        </resources>
+        <!--  ensure test jars also get NOTICE & LICENSE files  -->
+        <testResources>
+            <!--  This is the default setting from the super-pom  -->
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <!--  ensure the LICENSE.txt appears in jars  -->
+            <testResource>
+                <directory>${project.basedir}</directory>
+                <targetPath>META-INF</targetPath>
+                <includes>
+                    <include>LICENSE.txt</include>
+                </includes>
+            </testResource>
+        </testResources>
+
         <plugins>
             <plugin>
                 <groupId>com.googlecode.maven-download-plugin</groupId>
