@@ -49,7 +49,7 @@ public class GeoIPNonResidentImpl implements GeoIP {
                     .map(e -> e.split(","))
                     .filter(e -> !e[IPV_CSV_REGISTERED_COUNTRY_GEONAME_ID].isEmpty() || !e[IPV_CSV_GEONAME_ID].isEmpty())
                     .filter(e -> new IpAddressMatcher(e[LOCATIONS_CSV_GEO_ID]).matches(ipAddress))
-                    .map(e -> mapCountryCodeToCountryIsoCode(e))
+                    .map(this::mapCountryCodeToCountryIsoCode)
                     .filter(e -> !e.isEmpty())
                     .findFirst();
         } catch (IOException e) {
