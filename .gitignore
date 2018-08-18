@@ -1,0 +1,4 @@
+target/
+*.iml
+jacoco.exec
+hs_err_pid*
