@@ -1,0 +1,1 @@
+mvn clean package sonar:sonar -Dsonar.organization=tornaia-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=XXXXXXXXXX
