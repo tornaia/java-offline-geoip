@@ -7,8 +7,10 @@
     <artifactId>java-offline-geoip</artifactId>
     <version>${semver}</version>
     <packaging>jar</packaging>
+
     <name>Java Offline GeoIP</name>
     <description>Java Offline GeoIP maps any IP address to its country code</description>
+    <url>https://github.com/tornaia/java-offline-geoip</url>
 
     <distributionManagement>
         <snapshotRepository>
