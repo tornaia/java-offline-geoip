@@ -65,7 +65,7 @@
                         <id>Unzip GeoLite2-Country-CSV.zip</id>
                         <phase>process-resources</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <unzip src="${project.build.directory}/GeoLite2-Country-CSV.zip" dest="${project.basedir}/src/main/resources">
                                     <patternset>
                                         <include name="**/GeoLite2-Country-Blocks-IPv4.csv"/>
@@ -74,7 +74,7 @@
                                     </patternset>
                                     <mapper type="flatten"/>
                                 </unzip>
-                            </tasks>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>
