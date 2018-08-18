@@ -1,6 +1,9 @@
 package com.github.tornaia.geoip;
 
-public class GeoIPProvider {
+public final class GeoIPProvider {
+
+    private GeoIPProvider() {
+    }
 
     public static GeoIP getNonResidentGeoIP() {
         return new GeoIPNonResidentImpl();
