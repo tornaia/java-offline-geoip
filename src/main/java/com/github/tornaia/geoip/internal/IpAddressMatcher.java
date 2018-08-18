@@ -17,7 +17,7 @@ public class IpAddressMatcher {
      *                  come.
      */
     public IpAddressMatcher(String ipAddress) {
-        if (ipAddress.indexOf('/') > 0) {
+        if (ipAddress.contains("/")) {
             String[] addressAndMask = ipAddress.split("/");
             ipAddress = addressAndMask[0];
             nMaskBits = Integer.parseInt(addressAndMask[1]);
