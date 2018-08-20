@@ -2,6 +2,8 @@
 
 [![GitHub](https://img.shields.io/github/license/tornaia/java-offline-geoip.svg)](https://opensource.org/licenses/Apache-2.0) [![Travis (.com)](https://img.shields.io/travis/com/tornaia/java-offline-geoip.svg)](https://travis-ci.com/tornaia/java-offline-geoip) [![Maven Central](https://img.shields.io/maven-central/v/com.github.tornaia/java-offline-geoip.svg)](https://mvnrepository.com/artifact/com.github.tornaia/java-offline-geoip) [![SonarQube Coverage](https://img.shields.io/sonar/https/sonarcloud.io/com.github.tornaia%3Ajava-offline-geoip/coverage.svg)](https://sonarcloud.io/dashboard?id=com.github.tornaia%3Ajava-offline-geoip) [![SonarQube Tech Debt](https://img.shields.io/sonar/https/sonarcloud.io/com.github.tornaia%3Ajava-offline-geoip/tech_debt.svg)](https://sonarcloud.io/dashboard?id=com.github.tornaia%3Ajava-offline-geoip)
 
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TAANNK2KXZXHG)
+
 ##### Prerequisites for development
 
 * Java SE Development Kit 8 or later (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
