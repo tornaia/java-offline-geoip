@@ -1,6 +1,6 @@
 package com.github.tornaia.geoip;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -9,10 +9,10 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
 import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
-import static org.junit.Assert.assertThat;
 
 public class GeoLiteCsvTest {
 

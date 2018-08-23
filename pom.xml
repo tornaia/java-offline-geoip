@@ -74,7 +74,7 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-scm-plugin.version>1.10.0</maven-scm-plugin.version>
 
-        <junit.version>4.12</junit.version>
+        <junit-jupiter-engine.version>5.2.0</junit-jupiter-engine.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
 
         <sonar.java.source>1.8</sonar.java.source>
@@ -289,9 +289,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

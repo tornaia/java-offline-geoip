@@ -1,13 +1,15 @@
 package com.github.tornaia.geoip;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.lessThan;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class GeoIPTest {
 
@@ -109,12 +111,17 @@ public class GeoIPTest {
         assertFalse(optionalCountryIsoCode.isPresent());
     }
 
-    @Test(timeout = 10000)
+    @Test
     public void residentReallyInitializesJustOnce() {
         GeoIP geoIP = GeoIPProvider.getResidentGeoIP();
+
+        long start = System.currentTimeMillis();
         for (int i = 0; i < 50; ++i) {
             Optional<String> optionalCountryIsoCode = geoIP.getCountryIsoCode("92.104.171.16");
             assertEquals("CH", optionalCountryIsoCode.get());
         }
+        long duration = System.currentTimeMillis() - start;
+
+        assertThat(duration, lessThan(5000L));
     }
 }
