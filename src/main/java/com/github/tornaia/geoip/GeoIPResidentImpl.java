@@ -89,12 +89,12 @@ public class GeoIPResidentImpl implements GeoIP {
     }
 
     @Override
-    public Optional<String> getCountryIsoCode(InetAddress inetAddress) {
-        return getCountryIsoCode(inetAddress.getHostAddress());
+    public Optional<String> getTwoLetterCountryCode(InetAddress inetAddress) {
+        return getTwoLetterCountryCode(inetAddress.getHostAddress());
     }
 
     @Override
-    public Optional<String> getCountryIsoCode(String ipAddress) {
+    public Optional<String> getTwoLetterCountryCode(String ipAddress) {
         return MapHolder.getCidrNotationsToCountryIsoCodeMap()
                 .entrySet()
                 .parallelStream()

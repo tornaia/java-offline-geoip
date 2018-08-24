@@ -17,12 +17,12 @@ import static com.github.tornaia.geoip.GeoLiteConstants.LOCATIONS_CSV_GEO_ID;
 public class GeoIPNonResidentImpl implements GeoIP {
 
     @Override
-    public Optional<String> getCountryIsoCode(InetAddress inetAddress) {
-        return getCountryIsoCode(inetAddress.getHostAddress());
+    public Optional<String> getTwoLetterCountryCode(InetAddress inetAddress) {
+        return getTwoLetterCountryCode(inetAddress.getHostAddress());
     }
 
     @Override
-    public Optional<String> getCountryIsoCode(String ipAddress) {
+    public Optional<String> getTwoLetterCountryCode(String ipAddress) {
         Optional<String> optionalCountryCodeFromIpv4 = getIpv4(ipAddress);
         if (optionalCountryCodeFromIpv4.isPresent()) {
             return optionalCountryCodeFromIpv4;
