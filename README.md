@@ -8,6 +8,10 @@ Clear feedback. Just if you appreciate my efforts!
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TAANNK2KXZXHG)
 
+##### Intro
+
+ISO 3166-1 alpha-2 codes are two-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard published by the International Organization for Standardization (ISO), to represent countries, dependent territories, and special areas of geographical interest. [Read more](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+
 ##### Prerequisites for development
 
 * JDK10 to build (http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html) 
