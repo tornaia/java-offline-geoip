@@ -10,7 +10,8 @@ Clear feedback. Just if you appreciate my efforts!
 
 ##### Prerequisites for development
 
-* Java SE Development Kit 8 or later (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* JDK10 to build (http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html) 
+* JRE8 to run (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * Maven 3.2.1 or later (https://maven.apache.org/download.cgi)
 
 ##### Build
