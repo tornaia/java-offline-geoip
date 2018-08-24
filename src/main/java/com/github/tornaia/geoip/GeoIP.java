@@ -7,7 +7,7 @@ public interface GeoIP {
 
     /**
      * Returns the country code for a specific inetAddress. For example, this would be CH for the
-     * 85.1.242.106, and 36 for 81.182.2.4.
+     * 85.1.242.106, and HU for 81.182.2.4.
      *
      * @param inetAddress the inetAddress that we want to get the country code for
      * @return two letter country code for the inetAddress denoted by inetAddress
@@ -17,7 +17,7 @@ public interface GeoIP {
 
     /**
      * Returns the country code for a specific ip address. For example, this would be CH for the
-     * 85.1.242.106, and 36 for 81.182.2.4.
+     * 85.1.242.106, and HU for 81.182.2.4.
      *
      * @param ipAddress the ip address that we want to get the country code for
      * @return two letter country code for the ip address denoted by inetAddress
