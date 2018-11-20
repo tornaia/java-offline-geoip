@@ -30,7 +30,7 @@
 
     <scm>
         <url>https://github.com/tornaia/java-offline-geoip</url>
-        <connection>scm:git:https://github.com/tornaia/java-offline-geoip.git</connection>
+        <connection>scm:git:git@github.com:tornaia/java-offline-geoip.git</connection>
         <developerConnection>scm:git:git@github.com:tornaia/java-offline-geoip.git</developerConnection>
     </scm>
 
