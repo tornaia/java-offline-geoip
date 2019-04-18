@@ -15,13 +15,15 @@ import java.util.stream.Collectors;
 import static com.github.tornaia.geoip.GeoLiteConstants.IPV_CSV_GEONAME_ID;
 import static com.github.tornaia.geoip.GeoLiteConstants.IPV_CSV_REGISTERED_COUNTRY_GEONAME_ID;
 import static com.github.tornaia.geoip.GeoLiteConstants.LOCATIONS_CSV_COUNTRY_CODE_ISO;
+import static com.github.tornaia.geoip.GeoLiteConstants.LOCATIONS_CSV_COUNTRY_NAME;
 import static com.github.tornaia.geoip.GeoLiteConstants.LOCATIONS_CSV_GEO_ID;
 
 public class GeoIPResidentImpl implements GeoIP {
 
     private static class MapHolder {
 
-        private static final Map<IpAddressMatcher, String> CIDR_NOTATIONS_TO_COUNTRY_IDO_CODE_MAP = getCidrNotationsToCountryIdoCodeMap();
+        private static final Map<IpAddressMatcher, String> CIDR_NOTATIONS_TO_COUNTRY_ISO_CODE_MAP = getCidrNotationsToCountryIdoCodeMap();
+        private static final Map<String, String> COUNTRY_ISO_CODE_TO_COUNTRY_NAME_MAP = getCountryIsoCodeToCountryNameMapInternal();
 
         private static Map<IpAddressMatcher, String> getCidrNotationsToCountryIdoCodeMap() {
             Map<IpAddressMatcher, String> cidrNotationsToCountryIsoCodeMap = new HashMap<>();
@@ -67,6 +69,21 @@ public class GeoIPResidentImpl implements GeoIP {
             }
         }
 
+        private static Map<String, String> getCountryIsoCodeToCountryNameMapInternal() {
+            try (InputStream inputStream = MapHolder.class.getClassLoader().getResourceAsStream("GeoLite2-Country-Locations-en.csv")) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                return reader
+                        .lines()
+                        .skip(1)
+                        .map(e -> e.split(","))
+                        .filter(e -> e[LOCATIONS_CSV_COUNTRY_CODE_ISO] != null && !e[LOCATIONS_CSV_COUNTRY_CODE_ISO].isEmpty())
+                        .filter(e -> e[LOCATIONS_CSV_COUNTRY_NAME] != null && !e[LOCATIONS_CSV_COUNTRY_NAME].isEmpty())
+                        .collect(Collectors.toMap(e -> e[LOCATIONS_CSV_COUNTRY_CODE_ISO], e -> stripLeadingAndTrailingDoubleQuotes(e[LOCATIONS_CSV_COUNTRY_NAME]), (a, b) -> a));
+            } catch (IOException e) {
+                throw new GeoIPException("Failed to read GeoLite2-Country-Locations-en.csv", e);
+            }
+        }
+
         private static String mapCountryCodeToCountryIsoCode(Map<String, String> countryIdToCountryIsoCodeMap, String[] splittedLine) {
             String registeredCountryGeonameId = splittedLine[IPV_CSV_REGISTERED_COUNTRY_GEONAME_ID];
             String geonameId = splittedLine[IPV_CSV_GEONAME_ID];
@@ -83,8 +100,27 @@ public class GeoIPResidentImpl implements GeoIP {
             return countryIsoCode;
         }
 
+        private static String stripLeadingAndTrailingDoubleQuotes(String maybeQuotedCountryName) {
+            String countryName = maybeQuotedCountryName;
+
+            if (countryName.startsWith("\"")) {
+                countryName = countryName.substring(1);
+            }
+
+            if (countryName.endsWith("\"")) {
+                countryName = countryName.substring(0, countryName.length() - 1);
+            }
+
+            return countryName;
+        }
+
+
         private static Map<IpAddressMatcher, String> getCidrNotationsToCountryIsoCodeMap() {
-            return MapHolder.CIDR_NOTATIONS_TO_COUNTRY_IDO_CODE_MAP;
+            return MapHolder.CIDR_NOTATIONS_TO_COUNTRY_ISO_CODE_MAP;
+        }
+
+        private static Map<String, String> getCountryIsoCodeToCountryNameMap() {
+            return MapHolder.COUNTRY_ISO_CODE_TO_COUNTRY_NAME_MAP;
         }
     }
 
@@ -102,5 +138,22 @@ public class GeoIPResidentImpl implements GeoIP {
                 .map(Map.Entry::getValue)
                 .filter(e -> !e.isEmpty())
                 .findFirst();
+    }
+
+    @Override
+    public Optional<String> getCountryName(InetAddress inetAddress) {
+        return getCountryName(inetAddress.getHostAddress());
+    }
+
+    @Override
+    public Optional<String> getCountryName(String ipAddress) {
+        Optional<String> optionalTwoLetterCountryCode = getTwoLetterCountryCode(ipAddress);
+        if (optionalTwoLetterCountryCode.isPresent()) {
+            String twoLetterCountryCode = optionalTwoLetterCountryCode.get();
+            Map<String, String> countryIsoCodeToCountryNameMap = MapHolder.getCountryIsoCodeToCountryNameMap();
+            String countryName = countryIsoCodeToCountryNameMap.get(twoLetterCountryCode);
+            return Optional.ofNullable(countryName);
+        }
+        return Optional.empty();
     }
 }
