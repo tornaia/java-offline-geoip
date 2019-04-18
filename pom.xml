@@ -238,6 +238,7 @@
                     <additionalOptions>
                         <additionalOption>-html5</additionalOption>
                     </additionalOptions>
+                    <source>${java.version}</source>
                 </configuration>
                 <executions>
                     <execution>
