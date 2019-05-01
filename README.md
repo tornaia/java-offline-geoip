@@ -15,13 +15,13 @@ ISO 3166-1 alpha-2 codes are two-letter country codes defined in ISO 3166-1, par
 ##### How to use
 
 ```java
-    GeoIP geoIP = GeoIPProvider.getGeoIP();
+GeoIP geoIP = GeoIPProvider.getGeoIP();
 
-    Optional<String> optionalCountryIsoCode = geoIP.getTwoLetterCountryCode("50.63.202.32");
-    // optionalCountryIsoCode: Optional[US]
-    
-    Optional<String> optionalCountryName = geoIP.getCountryName("50.63.202.32");
-    // optionalCountryName: Optional[United States]
+Optional<String> optionalCountryIsoCode = geoIP.getTwoLetterCountryCode("50.63.202.32");
+// optionalCountryIsoCode: Optional[US]
+
+Optional<String> optionalCountryName = geoIP.getCountryName("50.63.202.32");
+// optionalCountryName: Optional[United States]
 ```
 
 ##### Maven
