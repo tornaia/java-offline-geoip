@@ -24,10 +24,19 @@ ISO 3166-1 alpha-2 codes are two-letter country codes defined in ISO 3166-1, par
     // optionalCountryName: Optional[United States]
 ```
 
+##### Maven
+
+```xml
+<dependency>
+  <groupId>com.github.tornaia</groupId>
+  <artifactId>java-offline-geoip</artifactId>
+  <version>0.1.10</version>
+</dependency>
+```
+
 ##### Prerequisites for development
 
-* JDK10 to build (http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html) 
-* JRE8 to run (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* OpenJDK 8 or later (https://jdk.java.net/) 
 * Maven 3.2.1 or later (https://maven.apache.org/download.cgi)
 
 ##### Build
