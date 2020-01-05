@@ -107,14 +107,14 @@ public class GeoIPTest {
     @Test
     public void getTwoLetterCountryCodeIPNoRegisteredCountryAndGeonameIdWithNonResident() {
         GeoIP geoIP = GeoIPProvider.getGeoIP(GeoIPProvider.Type.NON_RESIDENT);
-        Optional<String> optionalCountryIsoCode = geoIP.getTwoLetterCountryCode("86.62.5.1");
+        Optional<String> optionalCountryIsoCode = geoIP.getTwoLetterCountryCode("193.254.99.2");
         assertFalse(optionalCountryIsoCode.isPresent());
     }
 
     @Test
     public void getTwoLetterCountryCodeIPNoRegisteredCountryAndGeonameIdWithResident() {
         GeoIP geoIP = GeoIPProvider.getGeoIP(GeoIPProvider.Type.RESIDENT);
-        Optional<String> optionalCountryIsoCode = geoIP.getTwoLetterCountryCode("86.62.5.1");
+        Optional<String> optionalCountryIsoCode = geoIP.getTwoLetterCountryCode("193.254.99.2");
         assertFalse(optionalCountryIsoCode.isPresent());
     }
 
@@ -226,14 +226,14 @@ public class GeoIPTest {
     @Test
     public void getCountryNameIPNoRegisteredCountryAndGeonameIdWithNonResident() {
         GeoIP geoIP = GeoIPProvider.getGeoIP(GeoIPProvider.Type.NON_RESIDENT);
-        Optional<String> optionalCountryName = geoIP.getCountryName("86.62.5.1");
+        Optional<String> optionalCountryName = geoIP.getCountryName("193.254.99.2");
         assertFalse(optionalCountryName.isPresent());
     }
 
     @Test
     public void getCountryNameIPNoRegisteredCountryAndGeonameIdWithResident() {
         GeoIP geoIP = GeoIPProvider.getGeoIP(GeoIPProvider.Type.RESIDENT);
-        Optional<String> optionalCountryName = geoIP.getCountryName("86.62.5.1");
+        Optional<String> optionalCountryName = geoIP.getCountryName("193.254.99.2");
         assertFalse(optionalCountryName.isPresent());
     }
 
