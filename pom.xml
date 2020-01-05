@@ -126,7 +126,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip</url>
+                            <url>https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&amp;license_key=${maxmind-license-key}&amp;suffix=zip</url>
                             <outputFileName>GeoLite2-Country-CSV.zip</outputFileName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
                         </configuration>

@@ -1,0 +1,20 @@
+@echo off
+
+if [%1]==[] goto usage
+if [%2]==[] goto usage
+
+SET SEMVER=%1
+SET SEMVER=%2
+
+@echo SEMVER: %SEMVER%
+@echo MAXMIND-LICENSE-KEY: %MAXMIND-LICENSE-KEY%
+
+@echo on
+@echo Build, deploy, tag
+mvn clean deploy scm:tag -Dsemver=%SEMVER% -Dmaxmind-license-key=%MAXMIND-LICENSE-KEY%
+
+@echo Done
+goto :eof
+
+:usage
+@echo Usage: release.bat 0.1.11 maxmind-license-key

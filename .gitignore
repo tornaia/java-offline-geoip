@@ -2,4 +2,4 @@ target/
 *.iml
 jacoco.exec
 hs_err_pid*
-sonar.bat
+release.bat

@@ -1,6 +1,6 @@
 ### Java Offline Geoip
 
-[![GitHub](https://img.shields.io/github/license/tornaia/java-offline-geoip.svg)](https://opensource.org/licenses/Apache-2.0) [![Travis (.com)](https://img.shields.io/travis/com/tornaia/java-offline-geoip.svg)](https://travis-ci.com/tornaia/java-offline-geoip) [![Maven Central](https://img.shields.io/maven-central/v/com.github.tornaia/java-offline-geoip.svg)](https://mvnrepository.com/artifact/com.github.tornaia/java-offline-geoip) [![SonarQube Coverage](https://img.shields.io/sonar/https/sonarcloud.io/java-offline-geoip/coverage.svg)](https://sonarcloud.io/dashboard?id=java-offline-geoip) [![SonarQube Tech Debt](https://img.shields.io/sonar/https/sonarcloud.io/java-offline-geoip/tech_debt.svg)](https://sonarcloud.io/dashboard?id=java-offline-geoip)
+[![GitHub](https://img.shields.io/github/license/tornaia/java-offline-geoip.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ##### Donate
 
